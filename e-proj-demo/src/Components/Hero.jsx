@@ -22,7 +22,7 @@ export function Hero() {
     <div
       className="hero-bg min-vh-100 d-flex align-items-center justify-content-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(12, 81, 87, 0.6), rgba(34, 89, 122, 0.6)), url(${images[currentImage]})`,
+        backgroundImage: `linear-gradient(rgba(40, 116, 122, 0.6), rgba(34, 89, 122, 0.6)), url(${images[currentImage]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         transition: "background-image 1s ease-in-out"
