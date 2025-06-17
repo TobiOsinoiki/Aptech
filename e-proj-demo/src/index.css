@@ -1,0 +1,86 @@
+.nav{
+   color: #1e3a8a;
+}
+
+.app{
+   
+    background-color: rgb(204, 229, 238);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-bg {
+  transition: background-image 1s ease-in-out;
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Custom colors */
+:root {
+  --bs-blue-900: #1e3a8a;
+  --bs-blue-800: #1e40af;
+  --bs-blue-700: #1d4ed8;
+  --bs-blue-600: #2563eb;
+  --bs-blue-500: #3b82f6;
+  --bs-blue-400: #60a5fa;
+  --bs-blue-300: #93c5fd;
+  --bs-blue-200: #bfdbfe;
+  --bs-blue-100: #dbeafe;
+  --bs-blue-50: #eff6ff;
+}
+
+/* Custom styles */
+.bg-gradient-blue {
+  background: linear-gradient(to right, var(--bs-blue-900), var(--bs-blue-800));
+}
+
+.bg-gradient-blue-light {
+  background: linear-gradient(to bottom, var(--bs-blue-50), white);
+}
+
+.text-blue-900 {
+  color: var(--bs-blue-900);
+}
+
+.text-blue-600 {
+  color: var(--bs-blue-600);
+}
+
+.text-blue-200 {
+  color: var(--bs-blue-200);
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.scale-hover:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
