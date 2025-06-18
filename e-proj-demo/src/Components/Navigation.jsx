@@ -24,7 +24,7 @@ export function Navigation({ activeSection, scrollToSection }) {
 
   return (
     <Navbar expand="md" className="bg-gradient-blue sticky-top shadow" expanded={expanded} onToggle={setExpanded}
-  style={{ background: "linear-gradient(rgb(39, 86, 167), rgb(3, 60, 101))"}}
+  style={{ background: "linear-gradient(rgb(105, 151, 232), rgb(83, 171, 234))"}}
 
     >
       <Container className="p-3">

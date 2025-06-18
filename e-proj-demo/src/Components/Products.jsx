@@ -47,7 +47,6 @@ export function Products() {
     { src: "rinse.png", id: 22, name: "Antibacterial Rinse", category: "mouthwash", price: "$9.99" },
     { src: "whiten.png", id: 23, name: "Whitening Mouthwash", category: "mouthwash", price: "$11.99" },
     { src: "sensitive-gums.png", id: 24, name: "Sensitive Gums Formula", category: "mouthwash", price: "$10.99" },
-    { src: "fresh.png", id: 25, name: "Fresh Breath Rinse", category: "mouthwash", price: "$7.99" },
   ]
 
   const filteredProducts =
