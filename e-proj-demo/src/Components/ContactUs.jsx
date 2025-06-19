@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Container, Row, Col, Card, Form, Button, Spinner } from "react-bootstrap"
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
+import emailjs from "emailjs-com";
 
 export function ContactUs() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,31 @@ export function ContactUs() {
   const handleSubmit = (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+
+    emailjs
+      .send(
+        "viper",          // e.g. 'service_xxx'
+        "viper001",         // e.g. 'template_xxx'
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: "danieldavidviper001@gmail.com", // EmailJS template can use this param or hardcode
+        },
+        "S4sTHjB2EcL0hIkq-"               // e.g. 'user_xxx'
+      )
+      .then(
+        (response) => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", subject: "", message: "" });
+          setIsSubmitting(false);
+        },
+        (error) => {
+          alert("Failed to send message, please try again.");
+          setIsSubmitting(false);
+        }
+      );
 
     // Simulate form submission
     setTimeout(() => {
@@ -61,68 +87,67 @@ export function ContactUs() {
                   </div>
                 ) : (
                   <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Name</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        name="name" 
-                        value={formData.name} 
-                        onChange={handleChange} 
-                        required 
-                      />
-                    </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Name</Form.Label>
+        <Form.Control 
+          type="text" 
+          name="name" 
+          value={formData.name} 
+          onChange={handleChange} 
+          required 
+        />
+      </Form.Group>
 
-                    <Form.Group className="mb-3">
-                      <Form.Label>Email</Form.Label>
-                      <Form.Control 
-                        type="email" 
-                        name="email" 
-                        value={formData.email} 
-                        onChange={handleChange} 
-                        required 
-                      />
-                    </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Email</Form.Label>
+        <Form.Control 
+          type="email" 
+          name="email" 
+          value={formData.email} 
+          onChange={handleChange} 
+          required 
+        />
+      </Form.Group>
 
-                    <Form.Group className="mb-3">
-                      <Form.Label>Subject</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        name="subject" 
-                        value={formData.subject} 
-                        onChange={handleChange} 
-                        required 
-                      />
-                    </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Subject</Form.Label>
+        <Form.Control 
+          type="text" 
+          name="subject" 
+          value={formData.subject} 
+          onChange={handleChange} 
+          required 
+        />
+      </Form.Group>
 
-                    <Form.Group className="mb-3">
-                      <Form.Label>Message</Form.Label>
-                      <Form.Control 
-                        as="textarea" 
-                        rows={5} 
-                        name="message" 
-                        value={formData.message} 
-                        onChange={handleChange} 
-                        required 
-                      />
-                    </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Message</Form.Label>
+        <Form.Control 
+          as="textarea" 
+          rows={5} 
+          name="message" 
+          value={formData.message} 
+          onChange={handleChange} 
+          required 
+        />
+      </Form.Group>
 
-                    <Button 
-                      type="submit" 
-                      variant="primary" 
-                      className="w-100" 
-                      disabled={isSubmitting}
-                      
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <span className="me-2">Sending...</span>
-                          <Spinner animation="border" size="sm" />
-                        </>
-                      ) : (
-                        "Send Message"
-                      )}
-                    </Button>
-                  </Form>
+      <Button 
+        type="submit" 
+        variant="primary" 
+        className="w-100" 
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? (
+          <>
+            <span className="me-2">Sending...</span>
+            <Spinner animation="border" size="sm" />
+          </>
+        ) : (
+          "Send Message"
+        )}
+      </Button>
+    </Form>
                 )}
               </Card.Body>
             </Card>

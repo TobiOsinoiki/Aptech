@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Menu, X } from "lucide-react";
 
 export function Navigation({ activeSection, scrollToSection }) {
+    const [visitCount, setVisitCount] = useState(0);
+  const hasCountedVisit = useRef(false); // flag to prevent double counting
+
+  useEffect(() => {
+    if (hasCountedVisit.current) return;  // skip if already incremented
+
+    const visits = localStorage.getItem('visitorCount');
+    let count = visits ? parseInt(visits, 10) : 0;
+    count++;
+    localStorage.setItem('visitorCount', count);
+    setVisitCount(count);
+
+    hasCountedVisit.current = true; // mark as counted
+  }, []);
+
   const [hoveredItem, setHoveredItem] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
@@ -22,6 +37,8 @@ export function Navigation({ activeSection, scrollToSection }) {
     setExpanded(false);
   };
 
+  
+
   return (
     <Navbar expand="md" className="bg-gradient-blue sticky-top shadow" expanded={expanded} onToggle={setExpanded}
   style={{ background: "linear-gradient(rgb(105, 151, 232), rgb(83, 171, 234))"}}
@@ -40,7 +57,11 @@ export function Navigation({ activeSection, scrollToSection }) {
           <div>
             <Navbar.Brand className="text-white m-0">Belleville Dental</Navbar.Brand>
             <p className="text-white small m-0">Excellence in Oral Care</p>
+            <div className="text-white bold m-0" style={{ marginLeft: "auto" }}>
+        <strong>Visitors:🧑🏻‍🦲{visitCount}</strong>
+      </div>
           </div>
+          
         </div>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-0">

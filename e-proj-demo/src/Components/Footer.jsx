@@ -89,7 +89,7 @@ export function Footer({ scrollToSection }) {
         </Row>
 
         <div className="border-top border-secondary mt-4 pt-4 text-center text-secondary">
-          <p className="mb-0">&copy; 2024 Belleville Dental. All rights reserved.</p>
+          <p className="mb-0">&copy; 2025 Belleville Dental. All rights reserved.</p>
         </div>
       </Container>
     </footer>
