@@ -1,17 +1,22 @@
-import { Container, Row, Col, Card } from "react-bootstrap"
+import { useState, useEffect } from "react";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 export function Gallery() {
-  const galleryImages = [
-    { src: "room.png", alt: "Modern dental office", category: "Office" },
-    { src: "tools.jpg", alt: "Dental equipment", category: "Equipment" },
-    { src: "procedure.png", alt: "Dental procedure", category: "Procedures" },
-    { src: "team.png", alt: "Dental team", category: "Team" },
-    { src: "patient.png", alt: "Patient consultation", category: "Consultation" },
-    { src: "tech.png", alt: "Dental technology", category: "Technology" },
-    { src: "smile.png", alt: "Smile makeover", category: "Results" },
-    { src: "kids.png", alt: "Pediatric dentistry", category: "Pediatric" },
-    { src: "ortho.png", alt: "Orthodontic treatment", category: "Orthodontics" },
-  ]
+  const [galleryImages, setGalleryImages] = useState([]);
+
+  useEffect(() => {
+    fetch("/db.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch gallery images");
+        return res.json();
+      })
+      .then((data) => {
+        if (data.galleryImages) setGalleryImages(data.galleryImages);
+      })
+      .catch((error) => {
+        console.error("Error loading gallery images:", error);
+      });
+  }, []);
 
   return (
     <div className="py-5">
@@ -22,7 +27,7 @@ export function Gallery() {
         </div>
 
         <Row xs={1} md={2} lg={3} className="g-4">
-          {galleryImages.map((image, index) => ( 
+          {galleryImages.map((image, index) => (
             <Col key={index}>
               <Card className="border-0 shadow-sm overflow-hidden hover-shadow">
                 <div className="position-relative">
@@ -32,13 +37,11 @@ export function Gallery() {
                     className="card-img-top"
                     style={{ height: "250px", objectFit: "cover" }}
                   />
-                  <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-0 hover-overlay d-flex align-items-center justify-content-center"
-                    style={{ 
-                      transition: "opacity 0.3s ease",
-                      opacity: 0
-                    }}
-                    onMouseOver={(e) => e.currentTarget.style.opacity = 0.5}
-                    onMouseOut={(e) => e.currentTarget.style.opacity = 0}
+                  <div
+                    className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-0 hover-overlay d-flex align-items-center justify-content-center"
+                    style={{ transition: "opacity 0.3s ease" }}
+                    onMouseOver={(e) => (e.currentTarget.style.opacity = 0.5)}
+                    onMouseOut={(e) => (e.currentTarget.style.opacity = 0)}
                   >
                     <div className="text-white text-center">
                       <h5 className="mb-1">{image.alt}</h5>
@@ -52,5 +55,5 @@ export function Gallery() {
         </Row>
       </Container>
     </div>
-  )
+  );
 }
