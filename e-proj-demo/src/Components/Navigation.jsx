@@ -58,7 +58,7 @@ export function Navigation({ activeSection, scrollToSection }) {
             <Navbar.Brand className="text-white m-0">Belleville Dental</Navbar.Brand>
             <p className="text-white small m-0">Excellence in Oral Care</p>
             <div className="text-white bold m-0" style={{ marginLeft: "auto" }}>
-        <strong>Visitors:🧑🏻‍🦲{visitCount}</strong>
+        <strong>Visitors {visitCount}</strong>
       </div>
           </div>
           
@@ -73,7 +73,7 @@ export function Navigation({ activeSection, scrollToSection }) {
             {navItems.map((item) => (
               <Nav.Link
                 key={item.id}
-                className={`text-white px-3 ${activeSection === item.id ? "bg-primary rounded" : ""}`}
+                className={`text-white px-3 ${activeSection === item.id ? " rounded" : ""}`}
                 onClick={() => handleNavClick(item.id)}
                 onMouseEnter={() => setHoveredItem(item.id)}
                 onMouseLeave={() => setHoveredItem(null)}

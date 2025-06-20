@@ -1,0 +1,14 @@
+Group project title: Belleville Dental
+
+Group members:
+ADEPOJU ADEFEMI,
+OSINOIKI OLUPELUMI,
+DANIEL NWOSU,
+DANIEL EDET,
+SHITTU ABDULMALIK,
+AKONYE EMMANUEL
+
+roles of the group members:
+    * OSINOIKI OLUPELUMI and Shittu ABDULMALIK designed and implemented the webpage
+    * DANIEL NWOSU and AKONYE EMMANUEL went on research to get all the pdf, images and other research about Dental information
+    * DANIEL EDET and ADEPOJU ADEFEMI handled the data storage(json file and the implemention) and the documentation 
